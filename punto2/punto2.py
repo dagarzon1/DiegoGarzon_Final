@@ -81,19 +81,19 @@ plt.subplot(1,3,1)
 _ = plt.hist(p[:,0])
 m_s = np.mean(p[:,0])
 s = np.std(p[:,0])
-plt.title('sigma\n'+'mean='+str(m)+'\n'+'std='+str(s))
+plt.title('sigma\n'+'mean='+str(m_s)+'\n'+'std='+str(s))
 
 plt.subplot(1,3,2)
 _ = plt.hist(p[:,1])
 m_r = np.mean(p[:,1])
 s = np.std(p[:,1])
-plt.title('rho\n'+'mean='+str(m)+'\n'+'std='+str(s))
+plt.title('rho\n'+'mean='+str(m_r)+'\n'+'std='+str(s))
 
 plt.subplot(1,3,3)
 _ = plt.hist(p[:,2])
 m_b = np.mean(p[:,2])
 s = np.std(p[:,2])
-plt.title('beta\n'+'mean='+str(m)+'\n'+'std='+str(s))
+plt.title('beta\n'+'mean='+str(m_b)+'\n'+'std='+str(s))
 
 plt.savefig('histogramas.png')
 

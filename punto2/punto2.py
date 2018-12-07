@@ -97,19 +97,3 @@ plt.title('beta\n'+'mean='+str(m_b)+'\n'+'std='+str(s))
 
 plt.savefig('histogramas.png')
 
-plt.clf()
-
-t = data[:,0]
-x = data[:,1]
-y = data[:,2]
-z = data[:,3]
-t_m = np.linspace(0,3,100)
-x_m, y_m, z_m = (t_m, [m_s,m_r,m_b])
-plt.scatter(t,x,label='x', color='red')
-plt.plot(t_m,x_m, color='red')
-plt.scatter(t,y,label='y', color='blue')
-plt.plot(t_m,y_m, color='blue')
-plt.scatter(t,z,label='z', color='green')
-plt.plot(t_m,z_m, color='green')
-plt.legend()
-plt.savefig('modelo.png')

@@ -55,7 +55,7 @@ def leapfrog(t,f,param,momentum):
     return param_n, momentum_n
 def MC(d):
     param = [np.random.random(3)]
-    momentum = [np.random.normal(loc=2, size=3)]
+    momentum = [np.random.normal(loc=7, size=3)]
     t = d[:,0][1:]
     w = d[:,1:4][1:]
     for i in range(1,1000):
@@ -70,7 +70,7 @@ def MC(d):
             param.append(p)
         else:
             param.append(param[i-1])
-        momentum.append(np.random.normal(loc=2,size=3))
+        momentum.append(np.random.normal(loc=10,size=3))
     return param
 
 p = np.array(MC(data))
@@ -79,19 +79,19 @@ plt.figure(figsize=(11,4))
 
 plt.subplot(1,3,1)
 _ = plt.hist(p[:,0])
-m = np.mean(p[:,0])
+m_s = np.mean(p[:,0])
 s = np.std(p[:,0])
 plt.title('sigma\n'+'mean='+str(m)+'\n'+'std='+str(s))
 
 plt.subplot(1,3,2)
 _ = plt.hist(p[:,1])
-m = np.mean(p[:,1])
+m_r = np.mean(p[:,1])
 s = np.std(p[:,1])
 plt.title('rho\n'+'mean='+str(m)+'\n'+'std='+str(s))
 
 plt.subplot(1,3,3)
 _ = plt.hist(p[:,2])
-m = np.mean(p[:,2])
+m_b = np.mean(p[:,2])
 s = np.std(p[:,2])
 plt.title('beta\n'+'mean='+str(m)+'\n'+'std='+str(s))
 
@@ -103,8 +103,13 @@ t = data[:,0]
 x = data[:,1]
 y = data[:,2]
 z = data[:,3]
-plt.plot(t,x,label='x')
-plt.plot(t,y,label='y')
-plt.plot(t,z,label='z')
+t_m = np.linspace(0,3,100)
+x_m, y_m, z_m = (t_m, [m_s,m_r,m_b])
+plt.scatter(t,x,label='x', color='red')
+plt.plot(t_m,x_m, color='red')
+plt.scatter(t,y,label='y', color='blue')
+plt.plot(t_m,y_m, color='blue')
+plt.scatter(t,z,label='z', , color='green')
+plt.plot(t_m,z_m, color='green')
 plt.legend()
 plt.savefig('modelo.png')
